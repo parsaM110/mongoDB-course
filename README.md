@@ -115,3 +115,36 @@ find an obj
   }
 ]
 ```
+getting the id:
+```
+> db.student.find({},{_id:1}).pretty()
+[ { _id: ObjectId('670a3b15c2537f2496964033') } ]
+```
+time stamp:
+```
+> ObjectId('670a3b15c2537f2496964033').getTimestamp()
+ISODate('2024-10-12T09:02:13.000Z')
+```
+in terminal you type:
+```bash
+❯ uuidgen
+6AEFE7D9-13F2-4678-AC27-96297502CDDF
+```
+then you put it there:
+```json
+student = {
+"studentId" : "6AEFE7D9-13F2-4678-AC27-96297502CDDF",
+"firstName": "john",
+"lastName": "conner",
+"email": "rkilleen0@mysql.com",
+"gender": "F",
+"country": "Philippines",
+"isStudentActive": false,
+"favouriteSubjects": [
+"maths",
+"english",
+"it"
+],
+"totalSpentInBooks": 0.00
+}
+```
