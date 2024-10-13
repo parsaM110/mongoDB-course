@@ -92,6 +92,10 @@ then you write (if student collection doesn't exist the DB creates it):
 ```bash
 db.student.insert(student);
 ```
+or you can pass the obj like this:
+```
+db.student.insert({});
+```
 Altough Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
 ```
 > db.student.count();
@@ -147,4 +151,12 @@ student = {
 ],
 "totalSpentInBooks": 0.00
 }
+```
+insert multiple data:
+```
+ db.student.insertMany(students);
+```
+or this:
+```
+ db.student.insertMany([{},{}]);
 ```
