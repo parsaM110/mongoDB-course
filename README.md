@@ -160,3 +160,46 @@ or this:
 ```
  db.student.insertMany([{},{}]);
 ```
+find by firstName:
+```
+db.student.find({firstName: 'Cally'})
+[
+  {
+    _id: ObjectId('670b75e8c2537f249696403e'),
+    firstName: 'Cally',
+    lastName: 'Walkden',
+    email: 'cwalkden9@craigslist.org',
+    gender: 'F',
+    country: 'Niger',
+    isStudentActive: true,
+    favouriteSubjects: [ 'it' ],
+    totalSpentInBooks: 165
+  }
+]
+```
+adding projection:
+```
+> db.student.find({firstName: 'Cally'},{firstName: 1, lastName: 1})
+[
+  {
+    _id: ObjectId('670b75e8c2537f249696403e'),
+    firstName: 'Cally',
+    lastName: 'Walkden'
+  }
+]
+```
+exclude data:
+```
+ db.student.find({firstName: 'Cally'},{firstName: 0, lastName: 0})
+[
+  {
+    _id: ObjectId('670b75e8c2537f249696403e'),
+    email: 'cwalkden9@craigslist.org',
+    gender: 'F',
+    country: 'Niger',
+    isStudentActive: true,
+    favouriteSubjects: [ 'it' ],
+    totalSpentInBooks: 165
+  }
+]
+```
