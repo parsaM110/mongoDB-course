@@ -203,3 +203,44 @@ exclude data:
   }
 ]
 ```
+query params:
+```
+db.student.find({totalSpentInBooks: {$eq: 165}})
+```
+showing the ones not equal to ... also with projection :
+```
+> db.student.find({totalSpentInBooks: {$ne: 165}},{firstName: 1})
+[
+  { _id: ObjectId('670a3b15c2537f2496964033'), firstName: 'Retha' },
+  { _id: ObjectId('670a9abdc2537f2496964034'), firstName: 'john' },
+  { _id: ObjectId('670b75e8c2537f2496964035'), firstName: 'Retha' },
+  { _id: ObjectId('670b75e8c2537f2496964036'), firstName: 'Coraline' },
+  { _id: ObjectId('670b75e8c2537f2496964037'), firstName: 'Ario' },
+  { _id: ObjectId('670b75e8c2537f2496964038'), firstName: 'Sandye' },
+  { _id: ObjectId('670b75e8c2537f2496964039'), firstName: 'Lynn' },
+  { _id: ObjectId('670b75e8c2537f249696403a'), firstName: 'Fabe' },
+  { _id: ObjectId('670b75e8c2537f249696403b'), firstName: 'Nealon' },
+  { _id: ObjectId('670b75e8c2537f249696403c'), firstName: 'Jule' },
+  { _id: ObjectId('670b75e8c2537f249696403d'), firstName: 'Mufinella' }
+]
+```
+remember projection needs first {} :
+```
+ db.student.find({},{firstName: 1})
+```
+find only favouriteSubjects are and only are "it" :
+```
+> db.student.find({favouriteSubjects: ["it"]},{favouriteSubjects: 1})
+```
+find favouriteSubjects have at least "it" in them ($in works as well too):
+```
+> db.student.find({favouriteSubjects: {$all :["it"]}},{favouriteSubjects: 1})
+```
+find favouriteSubjects that have not "it" in them ($in works as well too):
+```
+> db.student.find({favouriteSubjects: {$nin :["it"]}},{favouriteSubjects: 1})
+```
+find favouriteSubjects have "it" or "math" in them:
+```
+> db.student.find({favouriteSubjects: {$in :["it","math"]}},{favouriteSubjects: 1})
+```
