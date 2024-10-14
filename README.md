@@ -244,3 +244,57 @@ find favouriteSubjects have "it" or "math" in them:
 ```
 > db.student.find({favouriteSubjects: {$in :["it","math"]}},{favouriteSubjects: 1})
 ```
+update data:
+```
+>db.student.update({_id:ObjectId('670b75e8c2537f249696403e')}, {$set: {firstName: 'Maria'}})
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+```
+omit field in data:
+```
+> db.student.update({_id: ObjectId('670b75e8c2537f249696403e')}, {$unset: {lastName: 1}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+```
+update by incrementing value:
+```
+db.student.update({_id: ObjectId('670b75e8c2537f249696403e')}, {$inc: {totalSpentInBooks: 1}})
+```
+pulling the array:
+```
+db.student.update({_id: ObjectId('670b75e8c2537f249696403e')}, {$pull: {favouriteSubjects: "it"}})
+```
+push to the array:
+```
+db.student.update({_id: ObjectId('670b75e8c2537f249696403e')}, {$push: {favouriteSubjects: "english"}})
+```
+delete obj:
+```
+> db.student.deleteOne({_id: ObjectId('670b75e8c2537f249696403e')})
+{ acknowledged: true, deletedCount: 1 }
+```
+delete from the top:
+```
+> db.student.deleteOne({})
+{ acknowledged: true, deletedCount: 1 }
+```
+delete some student based on query:
+```
+> db.student.deleteMany({gender:'M'})
+{ acknowledged: true, deletedCount: 4 }
+```
+delete all data:
+```
+> db.student.deleteMany({})
+```
