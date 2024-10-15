@@ -325,4 +325,17 @@ using forEach in cursor by classic js func:
 ```
 > db.student.find().forEach(function(student) {print(student.gender)});
 ``` 
-in
+indexes make search more performant:
+```
+> db.student.getIndexes()
+[ { v: 2, key: { _id: 1 }, name: '_id_' } ]
+```
+make index for searching by firstName:
+```
+>db.student.createIndex({firstName: 1})
+firstName_1
+```
+drop Index:
+```
+>db.student.dropIndex({firstName: 1})
+```
