@@ -317,3 +317,11 @@ sorting :
 ```
 db.student.find({},{firstName: 1, country: 1}).limit(3).sort({firstName:1})
 ```
+using forEach in cursor by arrow func:
+```
+> db.student.find().forEach((student)=> print(student.gender));
+```
+using forEach in cursor by classic js func:
+```
+> db.student.find().forEach(function(student) {print(student.gender)});
+``` 
