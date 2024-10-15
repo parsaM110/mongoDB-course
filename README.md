@@ -325,3 +325,4 @@ using forEach in cursor by classic js func:
 ```
 > db.student.find().forEach(function(student) {print(student.gender)});
 ``` 
+in
