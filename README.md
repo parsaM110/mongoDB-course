@@ -298,3 +298,22 @@ delete all data:
 ```
 > db.student.deleteMany({})
 ```
+creating cursor:
+```
+var cursor = db.student.find()
+```
+showing size:
+```
+cursor.size()
+cursor.count()
+cursor.next()
+cursor.hasNext()
+```
+more actions and filters with projections:
+```
+db.student.find({},{firstName: 1, country: 1}).limit(3).skio(1)
+```
+sorting :
+```
+db.student.find({},{firstName: 1, country: 1}).limit(3).sort({firstName:1})
+```
