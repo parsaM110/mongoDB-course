@@ -1,5 +1,5 @@
 ### Default Settings 
-The default values for the first login are "admin" for username and "pass" for password. 
+The default values for the first login in mongo Express are "admin" for username and "pass" for password. (there is another famous GUI called mongo Compass)
 
 ## Basics
 collections are like tables
@@ -338,4 +338,46 @@ firstName_1
 drop Index:
 ```
 >db.student.dropIndex({firstName: 1})
+```
+exec:
+```
+docker exec -it f91d552bd55f bash
+cat /etc/mongod.conf.orig
+cd /data/db/dump
+mongodump -u rootuser -p rootpass
+mongorestore /dump/ -u rootuser -p rootpass
+```
+managing user and access control:
+```
+use admin;
+switched to db admin
+admin> db
+admin
+admin> show collections
+system.users
+system.version
+admin> db.system.users.find()
+[
+  {
+    _id: 'admin.rootuser',
+    userId: UUID('f4e0f50c-5e93-4b90-adb0-40f7f5ba6a9b'),
+    user: 'rootuser',
+    db: 'admin',
+    credentials: {
+      'SCRAM-SHA-1': {
+        iterationCount: 10000,
+        salt: 'rLbWwuNZDILi65Uw8BInnw==',
+        storedKey: 'GLA27ax3Tm0xG67fbIWBGaMe/ik=',
+        serverKey: 'aAubdzs0DqQVl2htN/tCzRrCF+w='
+      },
+      'SCRAM-SHA-256': {
+        iterationCount: 15000,
+        salt: 'B4Fg67vCP56XP55WMZ49ycrPVQ+/FLPuwFrSfQ==',
+        storedKey: '9TukllsSbXyPW43vI2fJh5DkSMChrSfsx/xg1nIrgPA=',
+        serverKey: '7w0CTx354QJvmsWjesiflZyBsj4Wi5Lnf52X8iEEQhk='
+      }
+    },
+    roles: [ { role: 'root', db: 'admin' } ]
+  }
+]
 ```
