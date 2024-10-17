@@ -1,0 +1,17 @@
+{
+  "name": "mongo",
+  "version": "1.0.0",
+  "description": "driver for connecting to mongo db",
+  "main": "index.js",
+  "engines": {
+    "node": "18.13.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "parsa momeni",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^6.9.0"
+  }
+}

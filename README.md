@@ -381,3 +381,15 @@ admin> db.system.users.find()
   }
 ]
 ```
+seems node 14.17.6 got a problem :
+```
+        TextDecoderFatal ??= new TextDecoder('utf8', { fatal: true });
+                         ^^^
+
+SyntaxError: Unexpected token '??='
+```
+and there is some deprecation in curent node driver codebase ...
+dockerize this by:
+```
+docker run -rm- it -w /app -v $(PWD):/app node:lts-alpine3.13 /bin/sh
+```
